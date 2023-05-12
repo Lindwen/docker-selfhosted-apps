@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+
+  xonotic_server:
+    build: .
+    image: lindwen/xonotic:v1
+    container_name: xonotic_server
+    restart: unless-stopped
+    volumes:
+      - ./server.cfg:/Xonotic/data/server.cfg:rw
+    ports:
+      - 26000:26000/udp
