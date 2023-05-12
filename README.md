@@ -1,6 +1,6 @@
 # docker-selfhosted-apps
 
-Bienvenue sur mon repo où vous retrouverez tous mes docker-compose !
+Bienvenue sur ce guide où vous retrouverez tous mes services hébergés sur docker avec docker compose.
 
 # Services
 
@@ -13,5 +13,5 @@ Bienvenue sur mon repo où vous retrouverez tous mes docker-compose !
 # Credits
 
 Ce guide est inspiré par :
-- [@DoTheEvo](https://github.com/DoTheEvo/selfhosted-apps-docker)
-- [@BaptisteBdn](https://github.com/BaptisteBdn/docker-selfhosted-apps)
+* [@DoTheEvo](https://github.com/DoTheEvo/selfhosted-apps-docker)
+* [@BaptisteBdn](https://github.com/BaptisteBdn/docker-selfhosted-apps)
