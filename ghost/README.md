@@ -21,5 +21,5 @@ Configurer les fichiers :
 
 Lancer le docker compose :
 ```bash
-docker ocmpose up -d
+docker compose up -d
 ```
