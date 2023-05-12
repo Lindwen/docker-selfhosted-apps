@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+
+  ghost:
+    image: ghost:alpine
+    container_name: ghost
+    restart: unless-stopped
+    expose:
+      - 2368
+    depends_on:
+      - ghost-db
+    volumes:
+      - ./config.production.json:/var/lib/ghost/config.production.json:z
+      - ./content:/var/lib/ghost/content:z
+    networks:
+      - proxy-net
+      - ghost-net
+
+  ghost-db:
+    image: mysql:8.0
+    container_name: ghost-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - ./dbdata:/var/lib/mysql:z
+    networks:
+      - ghost-net
+
+networks:
+  ghost-net:
+  proxy-net:
+    external: true
