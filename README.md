@@ -10,6 +10,7 @@ Bienvenue sur ce guide où vous retrouverez tous mes services hébergés sur doc
 
 * [ghost](ghost/) - blog ghost
 * [grafana](grafana/) - serveur de monitoring Grafana avec support conteneurs docker
+* [nginx-proxy-manager](nginx-proxy-manager/) - reverse proxy nginx
 * [xonotic](xonotic/) - serveur de jeu Xonotic
 
 ---
