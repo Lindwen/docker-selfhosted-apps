@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+
+  nginx-proxy-manager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    container_name: nginx-proxy-manager
+    ports:
+      - '80:80' # http
+      - '443:443' # https
+      - '81:81' # Interface pour configurer le proxy
+    volumes:
+      - ./data:/data:rw
+      - ./letsencrypt:/etc/letsencrypt:rw
+      - ./_hsts.conf:/app/templates/_hsts.conf:ro
+    networks:
+      - proxy-net
+
+networks:
+  proxy-net:
+    name: proxy-net
