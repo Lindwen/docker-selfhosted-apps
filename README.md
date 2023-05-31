@@ -9,8 +9,8 @@ Bienvenue sur ce guide où vous retrouverez tous mes services hébergés sur doc
 # Services
 
 * [ghost](ghost/) - blog ghost
+* [grafana](grafana/) - serveur de monitoring Grafana avec support conteneurs docker
 * [xonotic](xonotic/) - serveur de jeu Xonotic
-
 
 ---
 
