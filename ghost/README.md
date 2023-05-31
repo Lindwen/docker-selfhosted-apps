@@ -18,7 +18,6 @@ Configurer les fichiers :
 - `.env` Modifier le mot de passe de MYSQL_ROOT_PASSWORD
 - `config.production.json` Modifier la ligne 13 ""password": "changeme"," en remplaçant changeme par le même mot de passe que celui dans le .env 
 
-
 Lancer le docker compose :
 ```bash
 docker compose up -d

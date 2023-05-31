@@ -17,7 +17,6 @@
 Configurer les fichiers :
 - `server.cfg` le template de configuration officiel ce trouve ici [xonotic/xonotic/blob/master/server/server.cfg](https://github.com/xonotic/xonotic/blob/master/server/server.cfg)
 
-
 Lancer le docker compose :
 ```bash
 docker compose up -d

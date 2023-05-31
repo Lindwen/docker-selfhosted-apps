@@ -4,7 +4,7 @@ services:
 
   xonotic_server:
     build: .
-    image: lindwen/xonotic:v1
+    image: xonotic/xonotic:v1
     container_name: xonotic_server
     restart: unless-stopped
     volumes:
