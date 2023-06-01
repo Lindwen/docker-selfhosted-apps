@@ -10,8 +10,11 @@ Bienvenue sur ce guide où vous retrouverez tous mes services hébergés sur doc
 
 * [ghost](ghost/) - blog ghost
 * [grafana](grafana/) - serveur de monitoring Grafana avec support conteneurs docker
+* [minecraft-paper-1.19.4](minecraft-paper-1.19.4/) - serveur minecraft 1.19.4 sous paper spigot avec optimisation JVM
+* [watchtower](watchtower/) - système de mise à jour automatique des images docker
 * [nginx-proxy-manager](nginx-proxy-manager/) - reverse proxy nginx
-* [xonotic](xonotic/) - serveur de jeu Xonotic
+* [xonotic](xonotic/) - serveur de jeu Xonotic `custom image`
+* [your-spotify](your-spotify/) - système de statistiques avancées pour spotify
 
 ---
 
