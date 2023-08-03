@@ -14,6 +14,8 @@ services:
       - ./data:/data:rw
       - ./letsencrypt:/etc/letsencrypt:rw
       - ./_hsts.conf:/app/templates/_hsts.conf:ro
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false" # Pour arrêter les mises à jour automatique de l'image avec watchtower
     networks:
       - proxy-net
 
