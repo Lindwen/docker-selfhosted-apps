@@ -8,12 +8,16 @@ Bienvenue sur ce guide où vous retrouverez tous mes services hébergés sur doc
 
 # Services
 
-* [ghost](ghost/) - blog ghost
+* [crafty](crafty/) - gestionnaire de serveurs minecraft
+* [ghost](ghost/) - blog avec ghost
+* [gist](gist/) - système de gist (pastebin) auto hébergé
 * [grafana](grafana/) - serveur de monitoring Grafana avec support conteneurs docker
-* [minecraft-paper-1.19.4](minecraft-paper-1.19.4/) - serveur minecraft 1.19.4 sous paper spigot avec optimisation JVM
-* [watchtower](watchtower/) - système de mise à jour automatique des images docker
+* [minecraft-forge-1.18.2](minecraft-forge-1.18.2/) - serveur minecraft 1.18.2 sous forge avec optimisation JVM
+* [minecraft-paper-1.19.4](minecraft-paper-1.19.4/) - serveur minecraft 1.19.4 sous paper avec optimisation JVM
 * [nginx-proxy-manager](nginx-proxy-manager/) - reverse proxy nginx
-* [xonotic](xonotic/) - serveur de jeu Xonotic `custom image`
+* [static-website](static-website/) - serveur web pour site static
+* [watchtower](watchtower/) - système de mise à jour automatique des images docker
+* [xonotic](xonotic/) - serveur de jeu Xonotic
 * [your-spotify](your-spotify/) - système de statistiques avancées pour spotify
 
 ---
