@@ -6,7 +6,7 @@
 
 Bienvenue sur ce guide où vous retrouverez tous mes services hébergés sur docker avec docker compose.
 
-# Services
+## Services
 
 * [crafty](crafty/) - gestionnaire de serveurs minecraft
 * [ghost](ghost/) - blog avec ghost
@@ -22,7 +22,27 @@ Bienvenue sur ce guide où vous retrouverez tous mes services hébergés sur doc
 
 ---
 
-# Credits
+## Utilisation 
+
+### Prérequis
+
+* Avoir docker & docker compose sur la machine : [docs.docker.com/engine/install](https://docs.docker.com/engine/install/)
+
+### Lancement d'un compose
+
+* Si il est nécessaire configurer le `.env`
+* Lancer le docker-compose.yml :
+```sh
+sudo docker compose up -d
+```
+* Voir les logs :
+```sh
+sudo docker compose logs -f
+```
+
+---
+
+#### Credits
 
 Ce guide est inspiré par :
 * [@DoTheEvo](https://github.com/DoTheEvo/selfhosted-apps-docker)
