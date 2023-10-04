@@ -5,6 +5,7 @@
 # docker-selfhosted-apps
 
 Bienvenue sur ce guide où vous retrouverez tous mes services hébergés sur docker avec docker compose.
+J'utilise le reverse proxy [traefik](https://doc.traefik.io/traefik/).
 
 ## Services
 
