@@ -7,10 +7,16 @@ services:
     image: httpd:alpine
     restart: unless-stopped
     volumes:
-      - ./data:/usr/local/apache2/htdocs/
+      - ./data:/usr/local/apache2/htdocs/:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.lindwen_fr.rule=Host(`lindwen.fr`)"
+      - "traefik.http.routers.lindwen_fr.entrypoints=websecure"
+      - "traefik.http.routers.lindwen_fr.middlewares=lindwen_fr-csp"
+      - "traefik.http.middlewares.lindwen_fr-csp.headers.contentSecurityPolicy=script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;"
     networks:
-      - proxy-net
+      - traefik-net
 
 networks:
-  proxy-net:
+  traefik-net:
     external: true
