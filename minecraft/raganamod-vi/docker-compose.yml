@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+
+  server:
+    container_name: ragnamod-VI
+    image: itzg/minecraft-server:java8-multiarch
+    restart: unless-stopped
+    volumes:
+      - $PWD/data:/data
+    ports:
+      - 25530:25565
+    environment:
+      #---- OS OPTIONS ----#
+      - UID=1001
+      - GID=1001
+      - INIT_MEMORY=1G
+      - MAX_MEMORY=20G
+      - TZ=Europe/Paris
+      - USE_AIKAR_FLAGS=true
+      #---- SERVER OPTIONS ----#
+      - TYPE=AUTO_CURSEFORGE
+      - CF_SLUG=ragnamod-vi
+      - CF_API_KEY=${CF_API_KEY}
+      - EULA=true
+      - MOTD=Serveur Ragnamod VI de Lindwen sous whitelist
+      - MAX_PLAYERS=100
+    tty: true
+    stdin_open: true
