@@ -1,0 +1,36 @@
+---
+version: "3"
+
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    restart: unless-stopped
+    environment:
+      - PUID=1001
+      - PGID=1001
+      - TZ=Europe/Paris
+    volumes:
+      - ./config:/config:rw
+      - ./data:/data:ro
+    expose:
+      - 8096
+      #- 8920 # https
+      #- 7359:7359/udp #optional
+      #- 1900:1900/udp #optional
+    healthcheck:
+      test: curl --connect-timeout 15 --max-time 100 --silent --show-error --fail "http://localhost:8096" > /dev/null
+      interval: 1m
+      timeout: 30s
+      retries: 3
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.jellyfin.rule=Host(`media.domain.tld`)"
+      - "traefik.http.services.jellyfin.loadbalancer.server.port=8096"
+      - "traefik.http.routers.jellyfin.entrypoints=websecure"
+    networks:
+      - traefik-net
+
+networks:
+  traefik-net:
+    external: true
