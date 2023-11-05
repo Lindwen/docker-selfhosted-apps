@@ -13,6 +13,7 @@ J'utilise le reverse proxy [traefik](https://doc.traefik.io/traefik/).
 * [ghost](ghost/) - blog avec ghost
 * [gist](gist/) - système de gist (pastebin) auto hébergé
 * [grafana](grafana/) - serveur de monitoring Grafana avec support conteneurs docker
+* [jellyfin](jellyfin/) - serveur de streaming vidéo
 * [minecraft-forge-1.18.2](minecraft-forge-1.18.2/) - serveur minecraft 1.18.2 sous forge avec optimisation JVM
 * [minecraft-paper-1.19.4](minecraft-paper-1.19.4/) - serveur minecraft 1.19.4 sous paper avec optimisation JVM
 * [nginx-proxy-manager](nginx-proxy-manager/) - reverse proxy nginx
