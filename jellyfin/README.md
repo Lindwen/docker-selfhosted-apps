@@ -13,12 +13,13 @@
 .pageTitleWithDefaultLogo {
 background-image: url("https://easydrawingguides.com/wp-content/uploads/2022/04/Jiji-Cat-step-by-step-drawing-tutorial-step-10.png");
 }
-.backgroundContainer {
+/* If you want to add custom background image */
+/* .backgroundContainer {
   background-color: rgba(0, 0, 0, 0);
   background-image: url('https://images7.alphacoders.com/133/1331311.png');
   filter: blur(10px);
   background-size: cover;
-}
+} */
 ```
 
 ### Plugins
