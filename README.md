@@ -1,7 +1,7 @@
 ![Logo Docker](https://www.docker.com/wp-content/uploads/2022/03/horizontal-logo-monochromatic-white.png)
 
 ---
-  
+[![Yaml Lint](https://github.com/Lindwen/docker-selfhosted-apps/actions/workflows/yaml-lint.yml/badge.svg)](https://github.com/Lindwen/docker-selfhosted-apps/actions/workflows/yaml-lint.yml)
 # docker-selfhosted-apps
 
 Bienvenue sur ce guide où vous retrouverez tous mes services hébergés sur docker avec docker compose.
