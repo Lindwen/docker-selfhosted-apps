@@ -2,6 +2,7 @@
 
 ---
 [![Yaml Lint](https://github.com/Lindwen/docker-selfhosted-apps/actions/workflows/yaml-lint.yml/badge.svg)](https://github.com/Lindwen/docker-selfhosted-apps/actions/workflows/yaml-lint.yml)
+[![Generate Services README](https://github.com/Lindwen/docker-selfhosted-apps/actions/workflows/generate_readme.yml/badge.svg)](https://github.com/Lindwen/docker-selfhosted-apps/actions/workflows/generate_readme.yml)
 # docker-selfhosted-apps
 
 Bienvenue sur ce guide où vous retrouverez tous mes services hébergés sur docker avec docker compose.
