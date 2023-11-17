@@ -1,0 +1,25 @@
+name: Generate Services README
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Generate README
+        run: |
+          chmod +x .github/workflows/generate_readme.sh
+          ./.github/workflows/generate_readme.sh > services.md
+
+      - name: Commit changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add services.md
+          git commit -m "Update Services README by GitHub Action"
+          git push
