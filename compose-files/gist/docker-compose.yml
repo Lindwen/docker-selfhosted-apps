@@ -1,3 +1,4 @@
+---
 version: "3"
 
 services:
@@ -10,8 +11,8 @@ services:
     volumes:
       - ./data:/opengist:rw
     environment:
-      OG_GITHUB_CLIENT_KEY: 
-      OG_GITHUB_SECRET: 
+      OG_GITHUB_CLIENT_KEY:
+      OG_GITHUB_SECRET:
     networks:
       - proxy-net
 

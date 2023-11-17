@@ -1,6 +1,6 @@
 ---
 name: Yaml Lint
-on: [push]  # yamllint disable-line rule:truthy
+on: [push] # yamllint disable-line rule:truthy
 jobs:
   lintAllTheThings:
     runs-on: ubuntu-latest
@@ -8,3 +8,31 @@ jobs:
       - uses: actions/checkout@v3
       - name: yaml-lint
         uses: ibiqlik/action-yamllint@v3
+        with:
+          config_data: |
+            extends: default
+            rules:
+              braces:
+                level: warning
+                max-spaces-inside: 1
+              brackets:
+                level: warning
+                max-spaces-inside: 1
+              colons:
+                level: warning
+              commas:
+                level: warning
+              comments: disable
+              comments-indentation: disable
+              document-start: disable
+              empty-lines:
+                level: warning
+              hyphens:
+                level: warning
+              indentation:
+                level: warning
+                indent-sequences: consistent
+              line-length:
+                level: warning
+                allow-non-breakable-inline-mappings: true
+              truthy: disable

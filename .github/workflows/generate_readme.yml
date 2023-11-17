@@ -1,3 +1,4 @@
+---
 name: Generate Services README
 on:
   push:
