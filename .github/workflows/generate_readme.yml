@@ -17,11 +17,11 @@ jobs:
           ./.github/workflows/generate_readme.sh > services.md
 
       - name: Commit changes
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          commit_message: Update Services README by GitHub Action
-          user_name: github-actions[bot]
-          user_email: github-actions[bot]@users.noreply.github.com
         run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add services.md
-          git push
+          git commit -m "Update Services README by GitHub Action"
+          git push https://TOKEN@github.com/Lindwen/docker-selfhosted-apps.git HEAD:main
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
