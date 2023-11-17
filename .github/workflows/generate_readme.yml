@@ -16,7 +16,14 @@ jobs:
           chmod +x .github/workflows/generate_readme.sh
           ./.github/workflows/generate_readme.sh > services.md
 
+      - name: Check if services.md changed
+        id: check_changes
+        run: |
+          git diff --exit-code services.md || exit 0
+        continue-on-error: true
+
       - name: Commit changes
+        if: steps.check_changes.outcome != 'success'
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
