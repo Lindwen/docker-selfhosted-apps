@@ -36,3 +36,5 @@ jobs:
                 level: warning
                 allow-non-breakable-inline-mappings: true
               truthy: disable
+              new-lines:
+                level: warning
