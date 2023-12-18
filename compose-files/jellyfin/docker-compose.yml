@@ -11,8 +11,8 @@ services:
       - PGID=1001
       - TZ=Europe/Paris
     volumes:
-      - ./config:/config:rw
-      - ./data:/data:ro
+      - $(pwd)/config:/config:rw
+      - $(pwd)/data:/data:ro
     expose:
       - 8096
       #- 8920 # https
