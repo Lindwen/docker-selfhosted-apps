@@ -1,8 +1,11 @@
-![Logo Docker](https://www.docker.com/wp-content/uploads/2022/03/horizontal-logo-monochromatic-white.png)
-
----
-
 # docker-selfhosted-apps
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="images/homepage.png">
+    <img src="images/homepage.png" width="65%">
+  </picture>
+</p>
 
 [![Yaml Lint](https://github.com/Lindwen/docker-selfhosted-apps/actions/workflows/yaml-lint.yml/badge.svg)](https://github.com/Lindwen/docker-selfhosted-apps/actions/workflows/yaml-lint.yml)
 ![GitHub Repo stars](https://img.shields.io/github/stars/Lindwen/docker-selfhosted-apps)
