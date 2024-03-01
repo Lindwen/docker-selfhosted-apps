@@ -10,9 +10,9 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/Lindwen/docker-selfhosted-apps)
 
 
-Welcome to this guide where you'll find all my services hosted on docker with [docker compose](https://docs.docker.com/compose/) configured to work with [homepage](https://github.com/gethomepage/homepage) & [watchtower](https://github.com/containrrr/watchtower).
+Welcome to this guide where you'll find all my services hosted on docker with [docker compose](https://docs.docker.com/compose/) configured to work with <img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/homepage.png" width=12px> [homepage](https://github.com/gethomepage/homepage) and <img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/watchtower.png" width=12px> [watchtower](https://github.com/containrrr/watchtower).
 
-I use [Nginx-Proxy-Manager](https://github.com/NginxProxyManager/nginx-proxy-manager) to manage my reverse proxy and my SSL certificates.
+I use <img src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/nginx-proxy-manager.png" width=12px> [Nginx-Proxy-Manager](https://github.com/NginxProxyManager/nginx-proxy-manager) to manage my reverse proxy and my SSL certificates.
 
 ## How to use it
 
