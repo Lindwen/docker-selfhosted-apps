@@ -2,8 +2,7 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="images/homepage.png">
-    <img src="images/homepage.png" width="65%">
+    <img src="images/homepage.png">
   </picture>
 </p>
 
