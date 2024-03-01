@@ -4,6 +4,7 @@
   <picture>
     <img src="images/homepage.gif">
   </picture>
+  <span style="font-size: 10px">Picture from my <em>homepage</em> take by <a href="https://github.com/Alessevan">Aless</a>.</span>
 </p>
 
 [![Yaml Lint](https://github.com/Lindwen/docker-selfhosted-apps/actions/workflows/yaml-lint.yml/badge.svg)](https://github.com/Lindwen/docker-selfhosted-apps/actions/workflows/yaml-lint.yml)
