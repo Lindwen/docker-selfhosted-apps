@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+
+    it-tools:
+        container_name: it-tools
+        image: 'corentinth/it-tools:latest'
+        restart: unless-stopped
+        labels:
+          #-- WatchTower --#
+          - com.centurylinklabs.watchtower.enable=true
+          #-- HomePage --#
+          - homepage.group=Tools and Utilities
+          - homepage.name=IT-Tools
+          - homepage.icon=it-tools.svg
+          - homepage.description=Handy online tools for developers
+          - homepage.href=${URL}
+          - homepage.siteMonitor=${URL}
+        networks:
+          - proxy-net
+
+networks:
+  proxy-net:
+    external: true

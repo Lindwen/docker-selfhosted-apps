@@ -1,0 +1,23 @@
+---
+version: "3.3"
+
+services:
+
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    restart: unless-stopped
+    expose:
+      - 3000
+    volumes:
+      - ./config:/app/config:rw
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      #-- WatchTower --#
+      - com.centurylinklabs.watchtower.enable=true
+    networks:
+      - proxy-net
+
+networks:
+  proxy-net:
+    external: true

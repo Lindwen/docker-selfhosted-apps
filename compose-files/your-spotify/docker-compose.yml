@@ -1,0 +1,61 @@
+---
+version: "3"
+
+services:
+
+  spotify-server:
+    image: yooooomi/your_spotify_server:latest
+    container_name: spotify-server
+    restart: unless-stopped
+    links:
+      - mongo
+    depends_on:
+      - mongo
+    environment:
+      API_ENDPOINT: ${API_ENDPOINT}
+      CLIENT_ENDPOINT: ${CLIENT_ENDPOINT}
+      SPOTIFY_PUBLIC: ${SPOTIFY_PUBLIC}
+      SPOTIFY_SECRET: ${SPOTIFY_SECRET}
+    labels:
+      #-- WatchTower --#
+      - com.centurylinklabs.watchtower.enable=true
+    networks:
+      - spotify-net
+      - proxy-net
+
+  mongo:
+    image: mongo:6
+    container_name: spotify-mongo
+    restart: unless-stopped
+    volumes:
+      - ./your_spotify_db:/data/db
+    labels:
+      #-- WatchTower --#
+      - com.centurylinklabs.watchtower.enable=true
+    networks:
+      - spotify-net
+
+  spotify-client:
+    image: yooooomi/your_spotify_client:latest
+    container_name: spotify-client
+    restart: unless-stopped
+    environment:
+      API_ENDPOINT: ${API_ENDPOINT}
+    labels:
+      #-- WatchTower --#
+      - com.centurylinklabs.watchtower.enable=true
+      #-- HomePage --#
+      - homepage.group=Tools and Utilities
+      - homepage.name=Your Spotify
+      - homepage.icon=your-spotify.svg
+      - homepage.description=Spotify tracking dashboard
+      - homepage.href=${CLIENT_ENDPOINT}
+      - homepage.siteMonitor=${CLIENT_ENDPOINT}
+    networks:
+      - spotify-net
+      - proxy-net
+
+networks:
+  spotify-net:
+  proxy-net:
+    external: true

@@ -1,0 +1,70 @@
+---
+version: "3"
+
+services:
+
+  lynx:
+    container_name: lynx
+    image: jackbailey/lynx:1
+    restart: unless-stopped
+    expose:
+      - 3000
+    depends_on:
+      - db
+    volumes:
+      - ./backups:/app/backups
+    environment:
+      - NODE_ENV=production
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - JWT_KEY=${JWT_KEY}
+      - URL_LENGTH=8
+      - URL_SET=standard
+      - URL_ONLY_UNIQUE=false
+      - HOME_REDIRECT=/dash/overview
+      - FORCE_FRONTEND_REDIRECT=false
+      - ENABLE_REGISTRATION=false # First registration will always be allowed
+      - DOMAIN=${URL}
+      - DEMO=false
+      - USE_HTTPS=true
+      - CORS=*
+      - BACKUP=true
+      - BACKUP_SCHEDULE=* 0 * * * # Use crontab.guru to create
+      - BACKUP_COUNT=5 # A count of 1 will make a backup file called backup.json
+      - URL_REGEX=https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*) # Don't use quotation marks
+      ## DO NOT CHANGE THESE:
+      - DB_HOST=db
+      - DB_PORT=27017
+    labels:
+      #-- WatchTower --#
+      - com.centurylinklabs.watchtower.enable=true
+      #-- HomePage --#
+      - homepage.group=Administration and Supervision
+      - homepage.name=Lynx
+      - homepage.icon=https://github.com/Lynx-Shortener/Lynx/raw/main/frontend/public/logo.png
+      - homepage.description=URLs Shortener
+      - homepage.href=${URL}
+      - homepage.siteMonitor=${URL}
+    networks:
+      - proxy-net
+      - lynx-net
+
+  db:
+    container_name: lynx-db
+    image: mongo
+    restart: unless-stopped
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${DB_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - ./db:/data/db
+    labels:
+      #-- WatchTower --#
+      - com.centurylinklabs.watchtower.enable=true
+    networks:
+      - lynx-net
+
+networks:
+  lynx-net:
+  proxy-net:
+    external: true

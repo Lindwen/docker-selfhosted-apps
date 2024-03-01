@@ -1,0 +1,25 @@
+---
+version: '3'
+
+services:
+
+  fail2ban:
+    image: lscr.io/linuxserver/fail2ban:latest
+    container_name: fail2ban
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    network_mode: host
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - VERBOSITY=-vv
+    volumes:
+      - ./config:/config:rw
+      - /var/log:/var/log:ro
+      - /home/ubuntu/docker/nginx-proxy-manager/logs:/remotelogs/nginx-proxy-manager:ro
+    labels:
+      #-- WatchTower --#
+      - com.centurylinklabs.watchtower.enable=true

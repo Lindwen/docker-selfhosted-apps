@@ -1,0 +1,44 @@
+---
+version: "3"
+services:
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    expose:
+      - 8080
+    environment:
+      - TZ=Europe/Paris
+      # Rends le label "com.centurylinklabs.watchtower.enable=true" obligatoire
+      # pour update le conteneur
+      - WATCHTOWER_LABEL_ENABLE=true
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_INCLUDE_RESTARTING=true
+      - WATCHTOWER_SCHEDULE=0 0 0 * * *
+      - WATCHTOWER_ROLLING_RESTART=true
+      - WATCHTOWER_HTTP_API_METRICS=true
+      - WATCHTOWER_HTTP_API_TOKEN=${KEY}
+      - WATCHTOWER_NOTIFICATION_TITLE_TAG=Enkidu
+      - WATCHTOWER_NOTIFICATIONS_LEVEL=info
+      - WATCHTOWER_NOTIFICATIONS=slack
+      - WATCHTOWER_NOTIFICATION_SLACK_IDENTIFIER=Watchtower
+      - WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL=${WEBHOOK}/slack
+    labels:
+      #-- WatchTower --#
+      - com.centurylinklabs.watchtower.enable=true
+      #-- HomePage --#
+      - homepage.group=Administration and Supervision
+      - homepage.name=Watchtower
+      - homepage.icon=watchtower.svg
+      - homepage.description=Auto-updates containers
+      - homepage.widget.type=watchtower
+      - homepage.widget.url=http://watchtower:8080
+      - homepage.widget.key=${KEY}
+    networks:
+      - proxy-net
+
+networks:
+  proxy-net:
+    external: true

@@ -8,36 +8,33 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/Lindwen/docker-selfhosted-apps)
 
 
-Bienvenue sur ce guide où vous retrouverez tous mes services hébergés sur docker avec [docker compose](https://docs.docker.com/compose/) configuré pour fonctionner avec [homepage]([homepage](https://github.com/gethomepage/homepage)) & [watchtower](https://github.com/containrrr/watchtower).
+Welcome to this guide where you'll find all my services hosted on docker with [docker compose](https://docs.docker.com/compose/) configured to work with [homepage](https://github.com/gethomepage/homepage) & [watchtower](https://github.com/containrrr/watchtower).
 
+I use [Nginx-Proxy-Manager](https://github.com/NginxProxyManager/nginx-proxy-manager) to manage my reverse proxy and my SSL certificates.
 
-> **Docker Compose** est un outil permettant de définir le comportement de vos conteneurs et d’exécuter des applications Docker à conteneurs multiples. La config se fait à partir d'un fichier YAML, et ensuite, avec une seule commande, vous créez et démarrez tous vos conteneurs de votre configuration.
+## How to use it
 
-source : [devopssec.fr](https://devopssec.fr/article/gerez-vos-conteneurs-docker-compose)
+Each folder in [compose-files](./compose-files/) named by the service name contains (or can contain):
+  - `docker-compose.yml`: configuration file for docker-compose
+  - `.env.dist`: environment variables file
+  - `* configuration files *`: configuration files for the service
 
-## Utilisation 
+### Prerequisites
 
-Chaque dossier dans [compose-files](./compose-files/) nommé par le nom du service contient (ou peut contenir) :
-  -  `docker-compose.yml` : fichier de configuration pour docker-compose
-  -  `.env.dist` : fichier de variables d'environnement
-  -  `* fichiers de configuration *` : fichiers de configuration pour le service
+* Have docker & docker compose on the machine: [Install Docker Engine](https://docs.docker.com/engine/install/)
 
-### Prérequis
+### Run
 
-* Avoir docker & docker compose sur la machine : [Install Docker Engine](https://docs.docker.com/engine/install/)
-
-### Lancement d'un fichier `docker-compose.yml`
-
-* Si il est nécessaire configurer le fichier contenant les variables d'environnement : `.env` (vous devez renommer le fichier `.env.dist` en `.env`).
-* Lancer le `docker-compose.yml` :
+* If necessary, configure the file containing environment variables: `.env` (you must rename the `.env.dist` file to `.env`).
+* Launch the `docker-compose.yml`:
 ```bash
 sudo docker compose up -d
 ```
-* Voir les logs des conteneurs :
+* View container logs:
 ```bash
 sudo docker compose logs -f
 ```
-* Arrêter les conteneurs :
+* Stop containers:
 ```bash
 sudo docker compose down
 ```
@@ -46,7 +43,7 @@ sudo docker compose down
 
 #### Credits
 
-Ce guide est inspiré par :
+This guide is inspired by the work of the following people:
 * [@DoTheEvo](https://github.com/DoTheEvo/selfhosted-apps-docker)
 * [@BaptisteBdn](https://github.com/BaptisteBdn/docker-selfhosted-apps)
 * [@PAPAMICA](https://github.com/PAPAMICA/docker-compose-collection)

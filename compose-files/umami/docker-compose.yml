@@ -1,0 +1,65 @@
+---
+version: '3'
+
+services:
+
+  umami:
+    image: ghcr.io/umami-software/umami:postgresql-latest
+    container_name: umami
+    restart: unless-stopped
+    expose:
+      - 3000
+    environment:
+      DATABASE_URL: postgresql://umami:umami@db:5432/umami
+      DATABASE_TYPE: postgresql
+      APP_SECRET: ${APP_SECRET}
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl http://localhost:3000/api/heartbeat"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    labels:
+      #-- WatchTower --#
+      - com.centurylinklabs.watchtower.enable=true
+      #-- HomePage --#
+      - homepage.group=Tools and Utilities
+      - homepage.name=Umami
+      - homepage.icon=umami-analytics.svg
+      - homepage.description=Alternative to Google Analytics
+      - homepage.href=${URL}
+      - homepage.siteMonitor=${URL}
+    networks:
+      - umami-net
+      - proxy-net
+
+  db:
+    image: postgres:15-alpine
+    container_name: umami-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: umami
+      POSTGRES_USER: umami
+      POSTGRES_PASSWORD: umami
+    volumes:
+      - umami-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    labels:
+      #-- WatchTower --#
+      - com.centurylinklabs.watchtower.enable=true
+    networks:
+      - umami-net
+
+networks:
+  umami-net:
+  proxy-net:
+    external: true
+
+volumes:
+  umami-db-data:

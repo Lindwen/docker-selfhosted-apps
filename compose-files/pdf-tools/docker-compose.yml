@@ -1,0 +1,27 @@
+---
+version: '3'
+
+services:
+
+    pdf-tools:
+        container_name: pdf-tools
+        image: 'frooodle/s-pdf:latest'
+        restart: unless-stopped
+        expose:
+          - 8080
+        labels:
+          #-- WatchTower --#
+          - com.centurylinklabs.watchtower.enable=true
+          #-- HomePage --#
+          - homepage.group=Tools and Utilities
+          - homepage.name=PDF-Tools
+          - homepage.icon=stirling-pdf.svg
+          - homepage.description=Powerful tools to manage PDF files
+          - homepage.href=${URL}
+          - homepage.siteMonitor=${URL}
+        networks:
+          - proxy-net
+
+networks:
+  proxy-net:
+    external: true

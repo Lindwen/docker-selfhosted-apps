@@ -1,0 +1,30 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/service-widgets
+
+- logo:
+    icon: https://easydrawingguides.com/wp-content/uploads/2022/04/Jiji-Cat-step-by-step-drawing-tutorial-step-10.png
+
+- resources:
+    cpu: true
+    memory: true
+    disk: /
+    uptime: true
+    expanded: true
+
+#- search:
+    #provider: google
+    #target: _blank
+
+- openmeteo:
+    label: Paris # optional
+    latitude: 48.866667
+    longitude: 2.333333
+    timezone: Europe/Paris # optional
+    units: metric # or imperial
+    cache: 5 # Time in minutes to cache API responses, to stay within limits
+
+- datetime:
+    text_size: xl
+    format:
+      timeStyle: short

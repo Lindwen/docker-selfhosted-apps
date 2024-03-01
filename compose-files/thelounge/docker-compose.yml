@@ -1,0 +1,31 @@
+---
+version: '3'
+
+services:
+
+  thelounge:
+    image: ghcr.io/thelounge/thelounge:latest
+    container_name: thelounge
+    expose:
+      - 9000
+    restart: unless-stopped
+    volumes:
+      - ./thelounge:/var/opt/thelounge
+    labels:
+      #-- WatchTower --#
+      - com.centurylinklabs.watchtower.enable=true
+      #-- HomePage --#
+      - homepage.group=Tools and Utilities
+      - homepage.name=The Lounge
+      - homepage.icon=thelounge.svg
+      - homepage.description=web IRC client
+      - homepage.href=${URL}
+      - homepage.siteMonitor=${URL}
+    networks:
+      - proxy-net
+
+networks:
+  proxy-net:
+    external: true
+
+# docker exec --user node -it thelounge thelounge add <user>

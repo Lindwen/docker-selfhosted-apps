@@ -1,0 +1,48 @@
+---
+version: "3"
+
+services:
+
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ./config:/config:rw
+      - ./data:/data:ro
+      - ./custom_scripts:/custom-cont-init.d:ro # custom startup script for Jellyscrub plugin client script injection
+    expose:
+      - 8096
+      #- 8920 # https
+      #- 7359:7359/udp #optional
+      #- 1900:1900/udp #optional
+    labels:
+      #-- WatchTower --#
+      - com.centurylinklabs.watchtower.enable=true
+      #-- HomePage --#
+      - homepage.group=Tools and Utilities
+      - homepage.name=Jellyfin
+      - homepage.icon=jellyfin.svg
+      - homepage.description=Media System
+      - homepage.href=${URL}
+      - homepage.siteMonitor=${URL}
+      - homepage.widget.type=jellyfin
+      - homepage.widget.url=${URL}
+      - homepage.widget.key=${KEY}
+      - homepage.widget.enableBlocks=true
+      - homepage.widget.enableNowPlaying=true
+    healthcheck:
+      test: curl --connect-timeout 15 --max-time 100 --silent --show-error --fail "http://localhost:8096" > /dev/null
+      interval: 1m
+      timeout: 30s
+      retries: 3
+    networks:
+      - proxy-net
+
+networks:
+  proxy-net:
+    external: true

@@ -1,0 +1,39 @@
+---
+version: '3'
+
+services:
+
+  server:
+    container_name: mc-survival
+    image: itzg/minecraft-server
+    restart: unless-stopped
+    volumes:
+      - $PWD/data:/data:rw
+    ports:
+      - 25566:25565
+    environment:
+      #---- OS OPTIONS ----#
+      - UID=${PUID}
+      - GID=${PGID}
+      - INIT_MEMORY=${INIT_MEMORY}
+      - MAX_MEMORY=${MAX_MEMORY}
+      - TZ=${TZ}
+      - USE_AIKAR_FLAGS=true
+      #---- SERVER OPTIONS ----#
+      - TYPE=PAPER
+      - EULA=true
+      - MOTD=      \u00A7aSemi-Vanilla \u00A7bSMP \u00A77- \u00A761.20.4 \u00A77- \u00A7cWhitelist
+      - ICON=https://cdn.freebiesupply.com/logos/large/2x/minecraft-1-logo-svg-vector.svg
+      - DIFFICULTY=hard
+      - MAX_PLAYERS=100
+    labels:
+      #-- WatchTower --#
+      - com.centurylinklabs.watchtower.enable=true
+      #-- HomePage --#
+      - homepage.group=Games
+      - homepage.name=Semi Vanilla SMP Minecraft Server
+      - homepage.description=${SERVER_IP}
+      - homepage.widget.type=minecraft
+      - homepage.widget.url=udp://${SERVER_IP}
+    tty: true
+    stdin_open: true

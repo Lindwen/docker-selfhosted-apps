@@ -1,0 +1,36 @@
+---
+version: '3'
+
+services:
+
+  filebrowser:
+    image: filebrowser/filebrowser:s6
+    container_name: filebrowser
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ./data:/srv:rw
+      - ./database:/database:rw
+      - ./settings.json:/config/settings.json:ro
+      - ./branding:/branding:ro
+    expose:
+      - 80
+    labels:
+      #-- WatchTower --#
+      - com.centurylinklabs.watchtower.enable=true
+      #-- HomePage --#
+      - homepage.group=Administration and Supervision
+      - homepage.name=FileBrowser
+      - homepage.icon=filebrowser.svg
+      - homepage.description=File managing interface
+      - homepage.href=${URL}
+      - homepage.siteMonitor=${URL}
+    networks:
+      - proxy-net
+
+networks:
+  proxy-net:
+    external: true

@@ -1,0 +1,45 @@
+---
+version: '3.8'
+
+services:
+
+  nginx-proxy-manager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: nginx-proxy-manager
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+    healthcheck:
+      test: ["CMD", "/usr/bin/check-health"]
+      interval: 10s
+      timeout: 3s
+    ports:
+      - '80:80' # http port
+      - '443:443' # https port
+      #- '81:81' # admin web port
+    labels:
+      #-- WatchTower --#
+      - com.centurylinklabs.watchtower.enable=true
+      #-- HomePage --#
+      - homepage.group=Administration and Supervision
+      - homepage.name=Nginx Proxy Manager
+      - homepage.icon=nginx-proxy-manager.svg
+      - homepage.description=Reverse proxy
+      - homepage.href=${URL}
+      - homepage.siteMonitor=${URL}
+      - homepage.widget.type=npm
+      - homepage.widget.url=${URL}
+      - homepage.widget.username=${NPM_USERNAME}
+      - homepage.widget.password=${NPM_PASSWORD}
+    volumes:
+      - ./data:/data:rw
+      - ./letsencrypt:/etc/letsencrypt:rw
+      - ./_hsts.conf:/app/templates/_hsts.conf:ro
+      - ./logs:/data/logs:rw
+    networks:
+      - proxy-net
+
+networks:
+  proxy-net:
+    external: true

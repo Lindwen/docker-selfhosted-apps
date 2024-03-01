@@ -1,0 +1,26 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/settings
+
+providers:
+  openweathermap: openweathermapapikey
+  weatherapi: weatherapiapikey
+
+title: Lindwen Homepage
+background:
+  image: https://i.imgur.com/xPLCnzb.gif
+  blur: sm
+  saturate: 50
+  brightness: 50
+  opacity: 50
+theme: dark
+color: gray
+language: fr
+hideVersion: true
+hideErrors: true
+headerStyle: boxedWidgets
+layout:
+  - Administration and Supervision:
+  - Tools and Utilities:
+  - Websites and Others:
+  - Games:
