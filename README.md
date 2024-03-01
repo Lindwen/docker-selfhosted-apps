@@ -8,26 +8,18 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/Lindwen/docker-selfhosted-apps)
 
 
-Bienvenue sur ce guide où vous retrouverez tous mes services hébergés sur docker avec docker compose.
+Bienvenue sur ce guide où vous retrouverez tous mes services hébergés sur docker avec [docker compose](https://docs.docker.com/compose/) configuré pour fonctionner avec [homepage]([homepage](https://github.com/gethomepage/homepage)) & [watchtower](https://github.com/containrrr/watchtower).
 
-## Services
-
-| 🤖 Nom | 🖋️ Description | 📑 Sources | 
-|:--:|--|--|
-| [ghost](./compose-files/ghost/) | Plateforme de publication open-source | [Docker Hub](https://hub.docker.com/_/ghost) |
-| [gist](./compose-files/gist/) | Service de partage de code | [Docker Hub](https://hub.docker.com/r/sameersbn/gist) |
-| ... | ... | ... |
-
----
 
 > **Docker Compose** est un outil permettant de définir le comportement de vos conteneurs et d’exécuter des applications Docker à conteneurs multiples. La config se fait à partir d'un fichier YAML, et ensuite, avec une seule commande, vous créez et démarrez tous vos conteneurs de votre configuration.
-devopssec.fr/
+
+source : [devopssec.fr](https://devopssec.fr/article/gerez-vos-conteneurs-docker-compose)
 
 ## Utilisation 
 
 ### Prérequis
 
-* Avoir docker & docker compose sur la machine : [docker.com](https://docs.docker.com/engine/install/)
+* Avoir docker & docker compose sur la machine : [Install Docker Engine](https://docs.docker.com/engine/install/)
 
 ### Lancement d'un fichier `docker-compose.yml`
 
