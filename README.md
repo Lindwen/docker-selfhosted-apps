@@ -17,6 +17,11 @@ source : [devopssec.fr](https://devopssec.fr/article/gerez-vos-conteneurs-docker
 
 ## Utilisation 
 
+Chaque dossier dans [compose-files](./compose-files/) nommé par le nom du service contient (ou peut contenir) :
+  -  `docker-compose.yml` : fichier de configuration pour docker-compose
+  -  `.env.dist` : fichier de variables d'environnement
+  -  `* fichiers de configuration *` : fichiers de configuration pour le service
+
 ### Prérequis
 
 * Avoir docker & docker compose sur la machine : [Install Docker Engine](https://docs.docker.com/engine/install/)
