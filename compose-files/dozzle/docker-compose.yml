@@ -1,0 +1,40 @@
+---
+version: "3"
+
+services:
+
+  dozzle:
+    container_name: dozzle
+    image: amir20/dozzle:latest
+    restart: unless-stopped
+    environment:
+      DOZZLE_AUTH_PROVIDER: simple
+      DOZZLE_ENABLE_ACTIONS: true
+      DOZZLE_NO_ANALYTICS: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./data:/data
+    expose:
+      - 8080
+    healthcheck:
+      test: ["CMD", "/dozzle", "healthcheck"]
+      interval: 3s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+    labels:
+      #-- WatchTower --#
+      - com.centurylinklabs.watchtower.enable=true
+      #-- HomePage --#
+      - homepage.group=Administration and Supervision
+      - homepage.name=Dozzle
+      - homepage.icon=dozzle.svg
+      - homepage.description=Docker log viewer
+      - homepage.href=${URL}
+      - homepage.siteMonitor=${URL}
+    networks:
+      - proxy-net
+
+networks:
+  proxy-net:
+    external: true
