@@ -34,7 +34,7 @@ services:
       - proxy-net
 
   db:
-    image: postgres:15-alpine
+    image: postgres:17-alpine
     container_name: umami-db
     restart: unless-stopped
     environment:
