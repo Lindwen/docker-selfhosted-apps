@@ -22,7 +22,7 @@ services:
       - proxy-net
 
   mongo:
-    image: mongo:6
+    image: mongo:8
     container_name: spotify-mongo
     restart: unless-stopped
     volumes:
